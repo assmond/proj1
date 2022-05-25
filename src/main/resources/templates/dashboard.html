@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>Your matches!</title>
+    </head>
+    <body>
+        <div style="text-align:center">
+            <div>
+                <p>Welcome!</p><p th:text="${username}"></p>
+            </div>
+            <div data-th-if="${matches==false}">
+                No Matches Found
+            </div>
+            <div data-th-if="${matches==true}">
+                <table>
+                    <tr data-th-each="match: ${matchList}">
+                        <td data-th-text="${match}"></td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <form class="form-signin" action="/loveMatch">
+                    <h2 class="form-signin-heading">Match With Someone?</h2>
+                    <input type="hidden" name="username" id="inputUsername" class="form-control" placeholder="Username" autofocus="" value="${username}">
+                    <button class="btn btn-lg btn-primary btn-block" type="submit" href="/loveMatch">Match!</button>
+                  </form>
+            </div>
+        </div>
+    </body>
+</html>
